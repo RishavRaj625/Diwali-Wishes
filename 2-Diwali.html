@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Diwali</title>
+  <style>
+    /* Inline CSS Styling */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle, #ff9e2c, #ff5722);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 90%;
+      padding: 20px;
+      border-radius: 10px;
+      transition: opacity 2s, transform 2s;
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+
+    .visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin: 0;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin: 20px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #ffcc00;
+      color: #333;
+      border: none;
+      border-radius: 18px 18px;
+      cursor: pointer;
+      margin-top: 20px;
+      margin-right: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    .diya {
+      width: 80px;
+      height: 80px;
+      margin: 40px auto 0;
+      background: url('diya.png') no-repeat center;
+      background-size: cover;
+      animation: flicker 1.5s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 0.8; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .firework, .firecracker {
+      position: absolute;
+      bottom: 0;
+      width: 5px;
+      height: 100px;
+      background: linear-gradient(to top, #ffcc00, transparent);
+      animation: rise 2s ease-out, explode 1s 1.5s ease-out forwards;
+    }
+
+    @keyframes rise {
+      0% { bottom: 0; opacity: 1; }
+      100% { bottom: 100vh; opacity: 0.8; }
+    }
+
+    @keyframes explode {
+      0% { width: 5px; height: 100px; opacity: 1; }
+      100% { width: 150px; height: 150px; opacity: 0; }
+    }
+  </style>
+</head>
+<body onload="showWishingText();">
+  <div class="container" id="wishingContainer">
+    <h1>Happy Diwali!</h1>
+    <p>Wishing you a festival of light and joy!</p>
+    <button onclick="playFireworks()">Celebrate with Fireworks!</button>
+    <button onclick="playDiwaliMusic()">Play Music</button>
+    <div class="diya"></div>
+  </div>
+
+  <audio id="diwaliMusic" src="diwali-music.mp3"></audio>
+
+  <script>
+    // Function to reveal wishing text with transition
+    function showWishingText() {
+      document.getElementById("wishingContainer").classList.add("visible");
+    }
+
+    // Fireworks and Firecracker Animation
+    function playFireworks() {
+      for (let i = 0; i < 3; i++) createFirework();
+      for (let i = 0; i < 3; i++) createFirecracker();
+    }
+
+    function createFirework() {
+      const firework = document.createElement("div");
+      firework.className = "firework";
+      firework.style.left = Math.random() * 100 + "vw";
+      firework.style.animationDuration = Math.random() * 2 + 2 + "s";
+      document.body.appendChild(firework);
+      setTimeout(() => firework.remove(), 3000);
+    }
+
+    function createFirecracker() {
+      const firecracker = document.createElement("div");
+      firecracker.className = "firecracker";
+      firecracker.style.left = Math.random() * 100 + "vw";
+      firecracker.style.animationDuration = Math.random() * 2 + 2 + "s";
+      document.body.appendChild(firecracker);
+      setTimeout(() => firecracker.remove(), 3000);
+    }
+
+    // Diwali Music Playback
+    function playDiwaliMusic() {
+      const music = document.getElementById("diwaliMusic");
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
+    }
+  </script>
+</body>
+</html>
