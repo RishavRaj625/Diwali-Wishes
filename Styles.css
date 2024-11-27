@@ -1,0 +1,64 @@
+ /* Basic styling */
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #000;
+      color: #ffd700;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    #canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    /* Person icon style */
+    .person {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 50px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    /* Fireworks and explosion styling */
+    .firework, .explosion {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .greeting {
+      position: relative;
+      z-index: 1;
+      margin-top: 20vh;
+    }
+
+    .greeting h1 {
+      font-size: 3rem;
+      animation: fadeIn 3s ease-in-out infinite alternate;
+    }
+
+    .shayari {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      animation: fadeIn 5s ease-in-out infinite alternate;
+    }
+
+    .music-controls {
+      position: relative;
+      margin-top: 2rem;
+      z-index: 1;
+    }
+
+    /* Keyframes for fading */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
